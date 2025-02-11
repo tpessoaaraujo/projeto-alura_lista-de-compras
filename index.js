@@ -1,15 +1,17 @@
-import { criarItemDaLista } from "./scripts/criarItemDaLista.js";
-import verificarListaVazia from "./scripts/verificarListaVazia.js";
-const listaDeCompras = document.getElementById("lista-de-compras");
-const botaoAdicionar = document.getElementById("adicionar-item");
+import { criarItemDaLista } from './scripts/criarItemDaLista.js';
+import verificarListaVazia from './scripts/verificarListaVazia.js';
 
+const listaDeCompras = document.getElementById('lista-de-compras');
+const formAdicionarItem = document.getElementById('form-adicionar-item');
 
-botaoAdicionar.addEventListener("click", (evento) => {
-    evento.preventDefault();
+formAdicionarItem.addEventListener('submit', (event) => {
+    event.preventDefault();
     const itemDaLista = criarItemDaLista();
-    listaDeCompras.appendChild(itemDaLista)
-    verificarListaVazia(listaDeCompras);
-})
-
+    if (itemDaLista) {
+        listaDeCompras.appendChild(itemDaLista);
+        verificarListaVazia(listaDeCompras);
+        formAdicionarItem.reset();
+    }
+});
 
 verificarListaVazia(listaDeCompras);
